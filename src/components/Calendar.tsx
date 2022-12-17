@@ -1,7 +1,9 @@
 import React from 'react';
 import { DateTime } from 'luxon';
 
-export default function Calendar() {
+export default function Calendar() {}
+
+
 
     // determine which dates to render
     // determine current month, previous month, next month dates
@@ -14,21 +16,22 @@ export default function Calendar() {
     // we need to use now() to get the current datetime
     // we can use daysInMonth to get number of days in the current month
     // weekday we give us the day (sunday, monday) of the date 
-    const now = DateTime.now();
-    const endOfPreviousMonth = now.minus({ months: 1 }).endOf('month');
+    //const now = DateTime.now();
+    // const endOfPreviousMonth = now.minus({ months: 1 }).endOf('month');
 
-    const startOfMonth = now.startOf('month');
-    const firstDayOfMonth = startOfMonth.weekday;
+    // const startOfMonth = now.startOf('month');
+    // const firstDayOfMonth = startOfMonth.weekday;
 
-    const firstRow = new Array(7).fill(null);
-    firstRow[firstDayOfMonth] = startOfMonth.day
+    // const firstRow = new Array(7).fill(null);
+    // firstRow[firstDayOfMonth] = startOfMonth.day
 
-    const calendar = [
-        firstRow, // [null, null, null, null, 1, 2, 3]
-        [4, 5, 6, 7, 8, 9, 10]
-    ]
+    // const calendar = [
+    //     firstRow, // [null, null, null, null, 1, 2, 3]
+    //     [4, 5, 6, 7, 8, 9, 10]
+    // ]
 
-    return (
-        <h1>{JSON.stringify(calendar)}</h1>
-    )
-}
+    // const 
+
+    // return (
+    //     <h1>{JSON.stringify(calendar)}</h1>
+    // )
