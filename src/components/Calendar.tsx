@@ -1,37 +1,80 @@
-import React from 'react';
-import { DateTime } from 'luxon';
+import React from "react";
+import { DateTime } from "luxon";
 
-export default function Calendar() {}
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
+const days = new Array(31).fill(null).map((_, i) => i + 1);
 
+// @ts-ignore
+export default function Calendar(props) {
+    const { month } = props;
 
-    // determine which dates to render
-    // determine current month, previous month, next month dates
-    // note: first row includes tail of prev month + start current month
-    // note: last row includes tail of current month + start of next month
-    // detemine current month
-    // determine what day (sunday, monday, etc), the first date of the month (1)
-    // render all 42 (7x6) dates
+    const buildHeader = (headerArr: string[]) => {
+        return (
+            <tr>
+                {headerArr.map(item => <th>{item}</th>)}
+            </tr>
+        )
+    };
+    
+    const buildWeek = (headerArr: number[]) => {
+        return (
+            <tr>
+                {headerArr.map(item => <td>{item}</td>)}
+            </tr>
+        )
+    };
+    
+    const buildMonth = (days: number[]) => {
+        const foo: number[][] = [];
 
-    // we need to use now() to get the current datetime
-    // we can use daysInMonth to get number of days in the current month
-    // weekday we give us the day (sunday, monday) of the date 
-    //const now = DateTime.now();
-    // const endOfPreviousMonth = now.minus({ months: 1 }).endOf('month');
+        const numOfWeeks = Math.ceil(days.length / 7);
 
-    // const startOfMonth = now.startOf('month');
-    // const firstDayOfMonth = startOfMonth.weekday;
+        for (let i = 0; i < numOfWeeks; i++) {
+            foo.push([...days.slice(i * 7, (i * 7) + 7)])
+        }
 
-    // const firstRow = new Array(7).fill(null);
-    // firstRow[firstDayOfMonth] = startOfMonth.day
+        return foo.map(week => buildWeek(week))
+    }
+    
+    return (
+        <table border={1}>
+            <tr>
+                <th colSpan={7}>{month}</th>
+            </tr>
+            {buildHeader(weekDays)}
+            {buildMonth(days)}
+        </table>
+    );
+}
 
-    // const calendar = [
-    //     firstRow, // [null, null, null, null, 1, 2, 3]
-    //     [4, 5, 6, 7, 8, 9, 10]
-    // ]
+// determine which dates to render
+// determine current month, previous month, next month dates
+// note: first row includes tail of prev month + start current month
+// note: last row includes tail of current month + start of next month
+// detemine current month
+// determine what day (sunday, monday, etc), the first date of the month (1)
+// render all 42 (7x6) dates
 
-    // const 
+// we need to use now() to get the current datetime
+// we can use daysInMonth to get number of days in the current month
+// weekday we give us the day (sunday, monday) of the date
+//const now = DateTime.now();
+// const endOfPreviousMonth = now.minus({ months: 1 }).endOf('month');
 
-    // return (
-    //     <h1>{JSON.stringify(calendar)}</h1>
-    // )
+// const startOfMonth = now.startOf('month');
+// const firstDayOfMonth = startOfMonth.weekday;
+
+// const firstRow = new Array(7).fill(null);
+// firstRow[firstDayOfMonth] = startOfMonth.day
+
+// const calendar = [
+//     firstRow, // [null, null, null, null, 1, 2, 3]
+//     [4, 5, 6, 7, 8, 9, 10]
+// ]
+
+// const
+
+// return (
+//     <h1>{JSON.stringify(calendar)}</h1>
+// )
