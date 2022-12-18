@@ -4,7 +4,7 @@ import Calendar from './components/Calendar';
 function App() {
   return (
     <div>
-      <Calendar month={new Date}/>
+      <Calendar month= 'December 2022'/>
     </div>
   );
 }
