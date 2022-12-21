@@ -43,7 +43,7 @@ export default function Calendar(props) {
                 <th colSpan={7}>{month}</th>
             </tr>
             {buildHeader(weekDays)}
-            {buildMonth(days)}
+            {buildMonth(days)} 
         </table>
     );
 }
