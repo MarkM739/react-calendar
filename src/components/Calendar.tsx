@@ -5,8 +5,15 @@ const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const days = new Array(31).fill(null).map((_, i) => i + 1);
 
+const setDate = DateTime.now();          
+const dt = DateTime.local();
+console.log(dt);
+console.log(dt.toJSDate());
+
+
+
 // @ts-ignore
-export default function Calendar(props) {
+export default function Calendar(props) {                   //Do we call our DateTime here? This is where I first tried
     const { month } = props;
 
     const buildHeader = (headerArr: string[]) => {
@@ -17,7 +24,7 @@ export default function Calendar(props) {
         )
     };
     
-    const buildWeek = (headerArr: number[]) => {
+    const buildWeek = (headerArr: number[]) => {             //Once we determine DateTime do we replace it with {item} in our Table row???
         return (
             <tr>
                 {headerArr.map(item => <td>{item}</td>)}
@@ -25,7 +32,7 @@ export default function Calendar(props) {
         )
     };
     
-    const buildMonth = (days: number[]) => {
+    const buildMonth = (days: number[]) => {                //Same question as above
         const foo: number[][] = [];
 
         const numOfWeeks = Math.ceil(days.length / 7);
