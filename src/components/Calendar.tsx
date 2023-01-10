@@ -3,18 +3,14 @@ import { DateTime } from "luxon";
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const days = new Array(31).fill(null).map((_, i) => i + 1);
+interface CalendarProps {
+    nowDt: DateTime;
+}
 
-const setDate = DateTime.now();          
-const dt = DateTime.local();
-console.log(dt);
-console.log(dt.toJSDate());
+export default function Calendar(props: CalendarProps) {                  
+    const { nowDt } = props;
 
-
-
-// @ts-ignore
-export default function Calendar(props) {                   //Do we call our DateTime here? This is where I first tried
-    const { month } = props;
+    const days = new Array(nowDt.daysInMonth).fill(null).map((_, i) => i + 1);
 
     const buildHeader = (headerArr: string[]) => {
         return (
@@ -24,7 +20,7 @@ export default function Calendar(props) {                   //Do we call our Dat
         )
     };
     
-    const buildWeek = (headerArr: number[]) => {             //Once we determine DateTime do we replace it with {item} in our Table row???
+    const buildWeek = (headerArr: number[]) => {             
         return (
             <tr>
                 {headerArr.map(item => <td>{item}</td>)}
@@ -32,7 +28,7 @@ export default function Calendar(props) {                   //Do we call our Dat
         )
     };
     
-    const buildMonth = (days: number[]) => {                //Same question as above
+    const buildMonth = (days: number[]) => {                
         const foo: number[][] = [];
 
         const numOfWeeks = Math.ceil(days.length / 7);
@@ -46,11 +42,15 @@ export default function Calendar(props) {                   //Do we call our Dat
     
     return (
         <table border={1}>
-            <tr>
-                <th colSpan={7}>{month}</th>
-            </tr>
-            {buildHeader(weekDays)}
-            {buildMonth(days)} 
+            <thead>
+                <tr>
+                    <th colSpan={7}>{nowDt.monthLong}</th>
+                </tr>
+                {buildHeader(weekDays)}
+            </thead>
+            <tbody>
+                {buildMonth(days)} 
+            </tbody>
         </table>
     );
 }

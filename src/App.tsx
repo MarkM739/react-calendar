@@ -7,7 +7,7 @@ import { DateTime } from "luxon";
 function App() {
   return (
     <div>
-      <Calendar month= { DateTime }/>
+      <Calendar nowDt={ DateTime.now().plus({ months: 4 }) }/>
     </div>
   );
 }
