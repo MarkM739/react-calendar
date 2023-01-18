@@ -24,7 +24,7 @@ export default function Calendar(props: CalendarProps) {
     const buildWeek = (headerArr: number[]) => {             
         return (
             <tr>
-                {headerArr.map(item => <td>{item}</td>)}
+                {headerArr.map(item => <td>{item}</td>)};
             </tr>
         )
     };
