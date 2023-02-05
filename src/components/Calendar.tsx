@@ -16,13 +16,17 @@ interface DayItem {
 export default function Calendar(props: CalendarProps) {
   const { nowDt } = props;
 
-  const firstDayOfMonth = nowDt.startOf("month");       // start of the current month
+  const weekLength = weekDays.length;
 
-  const firstDay = firstDayOfMonth.weekday;             // get the current week day (monday, tuesday, etc) as a number
+  const firstDayOfMonth = nowDt.startOf("month"); 
+  const firstDay = firstDayOfMonth.weekday;             
+  const firstDayOffset = firstDay % weekLength;  
+  
+  const lastDayofMonth = nowDt.endOf("month");
+  const lastDay = lastDayofMonth.weekday;
+  const lastDayOffset = weekLength - lastDay - 1
 
-  const firstDayOffset = firstDay % weekDays.length;    // gets the offset of the previous month in the current week
-
-  const days: DayItem[] = new Array(nowDt.daysInMonth + firstDayOffset)
+  const days: DayItem[] = new Array(nowDt.daysInMonth + firstDayOffset + lastDayOffset)
     .fill(null)
     .map((_, i: number) => {
       const date = firstDayOfMonth
@@ -38,9 +42,7 @@ export default function Calendar(props: CalendarProps) {
   const buildHeader = (headerArr: string[]) => {
     return (
       <tr>
-        {headerArr.map((item) => (
-          <th>{item}</th>
-        ))}
+        {headerArr.map(item => <th>{item}</th>)}
       </tr>
     );
   };
@@ -48,9 +50,7 @@ export default function Calendar(props: CalendarProps) {
   const buildWeek = (headerArr: DayItem[]) => {
     return (
       <tr>
-        {headerArr.map((item) => (
-          <td>{item.date}</td>
-        ))}
+        {headerArr.map(item => <td>{item.date}</td>)}
       </tr>
     );
   };
@@ -58,20 +58,20 @@ export default function Calendar(props: CalendarProps) {
   const buildMonth = (days: DayItem[]) => {
     const foo: DayItem[][] = [];
 
-    const numOfWeeks = Math.ceil(days.length / 7);
+    const numOfWeeks = Math.ceil(days.length / weekLength);
 
     for (let i = 0; i < numOfWeeks; i++) {
-      foo.push([...days.slice(i * 7, i * 7 + 7)]);
+      foo.push([...days.slice(i * weekLength, i * weekLength + weekLength)]);
     }
 
-    return foo.map((week) => buildWeek(week));
+    return foo.map(week => buildWeek(week));
   };
 
   return (
     <table border={1}>
       <thead>
         <tr>
-          <th colSpan={7}>{nowDt.monthLong}</th>
+          <th colSpan={weekLength}>{nowDt.monthLong}</th>
         </tr>
         {buildHeader(weekDays)}
       </thead>
