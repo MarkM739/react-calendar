@@ -1,14 +1,22 @@
-import React from 'react';
+import React from "react";
 import { DateTime } from "luxon";
 
 
+//useState always retruns values as array
 
-function Button() {
+interface ButtonProps {
+  onClick: () => void;
+  buttonText: string;
+}
+
+export default function Button(props: ButtonProps) {
+  function nextMonth() {
+    props.onClick();
+  }
+
   return (
     <div>
-      <button>Yes by</button>
+      <button onClick={nextMonth}>{props.buttonText}</button>
     </div>
   );
 }
-
-export default Button;

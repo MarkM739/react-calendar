@@ -4,18 +4,18 @@ import { DateTime } from "luxon";
 import Button from './components/Button';
 
 
-
-
 function App() {
+  const [nowDt, setNowDt] = React.useState(DateTime.now());
+
   return (
     <div>
-      <Calendar nowDt={ DateTime.now().plus({ months: 4 }) }/>
-      <Button/>
+      <Calendar nowDt={nowDt}/>
+      <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
+      <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />
+
     </div>
     
   );
 }
 
 export default App;
-
-
