@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { DateTime } from "luxon";
 
-/**
- * An onclick function that lets users plan their day.
- * lets user view the days activities, and add/remove/check an activity
- */
+interface AgendaProps {
+    onClick:() => void;
+    buttonText: string;
+}
 
 export default function Agenda() {
-    // list of items for the selected day
-    // should display each of these
+    
+    
     const items = [
         'wakeup',
         'eat breakfast',
