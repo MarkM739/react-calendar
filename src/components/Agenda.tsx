@@ -2,25 +2,19 @@ import React, {useState} from "react";
 import { DateTime } from "luxon";
 
 interface AgendaProps {
-    onClick:() => void;
+    onClick: () => void;
     buttonText: string;
 }
 
-export default function Agenda() {
-    
-    
-    
-    const items = [
-        'wakeup',
-        'eat breakfast',
-        'cardio for 5 seconds',
-        'pick things up and put them down again'
-    ];
-
+export default function Agenda(props: AgendaProps) {
+    const [inputText, setText] = useState('');
+  
+    const handleClick = () => {
+        setText(inputText);
+    };
 
     return (
-        <p>
-            {items.map(item => <p>{item}</p> )}
-        </p>
-    )
-};
+        <div>
+           <button onClick={handleClick}>{props.buttonText}</button>
+        </div>
+    );}

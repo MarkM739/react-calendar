@@ -14,7 +14,7 @@ function App() {
       <Calendar nowDt={nowDt}/>
       <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
       <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />
-      <Agenda/>
+      <Agenda buttonText='Add Event' onClick={() => }/>
 
     </div>
   );
