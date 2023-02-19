@@ -5,6 +5,12 @@ import Button from './components/Button';
 import './index.css';
 import Agenda from './components/Agenda';
 
+const testAgendaItems = [
+  {item: 'workout', dt: DateTime.now().minus({ hour: 1 })},
+  {item: 'sleep', dt: DateTime.now().minus({ hour: 4 })},
+  {item: 'eat dessert', dt: DateTime.now().plus({ hour: 2, minutes: 20 })},
+  {item: 'eat lunch', dt: DateTime.now().plus({ hour: 2 })}
+]
 
 function App() {
   const [nowDt, setNowDt] = React.useState(DateTime.now());
@@ -14,7 +20,7 @@ function App() {
       <Calendar nowDt={nowDt}/>
       <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
       <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />
-      <Agenda buttonText='Add Event' onClick={() => }/>
+      <Agenda items={testAgendaItems}/>
 
     </div>
   );
