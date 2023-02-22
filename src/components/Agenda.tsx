@@ -30,6 +30,31 @@ export default function Agenda(props: AgendaProps) {
         // ALT: setData(old => [...old, inputText])
         // TODO: Fix input field not clearing after on click
     };
+const DropDown = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <div className="dropdown">
+      <button onClick={handleOpen}>Dropdown</button>
+      {open ? (
+        <ul className="menu">
+          <li className="menu-item">
+            <button>Menu 1</button>
+          </li>
+          <li className="menu-item">
+            <button>Menu 2</button>
+          </li>
+        </ul>
+      ) : null}
+      {open ? <div>Is Open</div> : <div>Is Closed</div>}
+    </div>
+  );
+};
+
 
     const buildList = (items: AgendaItem[]) => {
         return (
@@ -48,6 +73,8 @@ export default function Agenda(props: AgendaProps) {
     );
 }
 
+ 
+  
 /**
  * Agenda View
  * 
