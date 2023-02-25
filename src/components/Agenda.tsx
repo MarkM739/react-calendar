@@ -40,6 +40,23 @@ export default function Agenda(props: AgendaProps) {
         )
     };
 
+    const DropDown = ({}) => {
+        const [isExpanded, setIsExpanded] = useState(false)
+
+        return (
+            <div>
+                <button
+                 onClick={() => setIsExpanded(true)}
+                 className="rounded text-white">Dropdown</button>
+                 {isExpanded &&
+                <div className="bg-white">
+
+                </div>
+                 }
+            </div>
+        )
+    };
+
     
     return (
         <div>
