@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { DateTime } from "luxon";
+import Dropdown from "./Dropdown";
 
 interface AgendaItem {
     item: string;
@@ -40,28 +41,16 @@ export default function Agenda(props: AgendaProps) {
         )
     };
 
-    const DropDown = ({}) => {
-        const [isExpanded, setIsExpanded] = useState(false)
-
-        return (
-            <div>
-                <button
-                 onClick={() => setIsExpanded(true)}
-                 className="rounded text-white">Dropdown</button>
-                 {isExpanded &&
-                <div className="bg-white">
-
-                </div>
-                 }
-            </div>
-        )
-    };
-
+    const dropdownOptions = [
+        {value: '9'},
+        {value: '10', label: '10 AM'}
+    ]
     
     return (
         <div>
             {buildList(agendaItems)}
             <input type="text" onChange={handleInputChange} value={inputText} />
+            <Dropdown title="yo whats up bro" options={dropdownOptions} />
             <button className="bg-slate-100 dark:bg-slate-400" onClick={handleOnClick}>Add item</button>
         </div>
     );
@@ -77,6 +66,6 @@ export default function Agenda(props: AgendaProps) {
  * - skip leg day
  * - whatever
  * 
- * [input field] [Add item]
+ * [input field] [Dropdown for time] [Add item]
  * 
  */

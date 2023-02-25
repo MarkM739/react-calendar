@@ -22,8 +22,7 @@ function App() {
       <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
       <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />
       <Agenda items={testAgendaItems}/>
-      <Dropdown/>
-
+      
     </div>
   );
 }
