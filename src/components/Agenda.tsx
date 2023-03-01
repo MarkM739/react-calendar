@@ -49,9 +49,9 @@ export default function Agenda(props: AgendaProps) {
     return (
         <div>
             {buildList(agendaItems)}
-            <input type="text" onChange={handleInputChange} value={inputText} />
-            <Dropdown title="yo whats up bro" options={dropdownOptions} />
-            <button className="bg-slate-100 dark:bg-slate-400" onClick={handleOnClick}>Add item</button>
+            <input className="bg-slate-300 border-white-2" type="text" onChange={handleInputChange} value={inputText} />
+            <Dropdown title="Tasks" options={dropdownOptions} />
+            <button className="bg-slate-700 border-white" onClick={handleOnClick}>Add item</button>
         </div>
     );
 }

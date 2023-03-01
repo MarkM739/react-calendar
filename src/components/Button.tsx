@@ -16,7 +16,7 @@ export default function Button(props: ButtonProps) {
 
   return (
     <div>
-      <button className="bg-green-500 text-white border-2 border-black" onClick={nextMonth}>{props.buttonText}</button>
+      <button className="bg-gray-800 text-white border-2 border-slate-400" onClick={nextMonth}>{props.buttonText}</button>
     </div>
   );
 }

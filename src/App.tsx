@@ -17,7 +17,7 @@ function App() {
   const [nowDt, setNowDt] = React.useState(DateTime.now());
 
   return (
-    <div>
+    <div className='bg-gray-700 text-white'>
       <Calendar nowDt={nowDt}/>
       <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
       <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />

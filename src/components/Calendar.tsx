@@ -70,9 +70,9 @@ export default function Calendar(props: CalendarProps) {
   };
 
   return (
-    <table border={1}>
-      <thead>
-        <tr>
+    <table className="border-2">
+      <thead className="border-2">
+        <tr className="border-2">
           <th colSpan={weekLength}>{nowDt.monthLong}</th>
         </tr>
         {buildHeader(weekDays)}
