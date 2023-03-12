@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 interface DropdownProps {
     title: string;
     options: DropdownOption[];
+    onChange: (index: number) => void;
 }
 
 interface DropdownOption {
@@ -12,71 +13,15 @@ interface DropdownOption {
 }
 
 export default function Dropdown(props: DropdownProps) {
-
-    const buildOptionList = (items: DropdownOption[]) => {
-        return items.map(item => {
-            return <option value={item.value}>{item.label ? item.label : item.value}</option>
-        })
-    }
-
-    class GetInput extends React.Component {
-      constructor(props) {
-        super(props);
-      }
-      render() {
-        return (
-          <div>
-            <h3>Get Input:</h3>
-            <input
-              value={this.props.input}
-              onChange={this.props.handleChange}/>
-          </div>
-        );
-      }
-    };
-    
-    class RenderInput extends React.Component {
-      constructor(props) {
-        super(props);
-      }
-      render() {
-        return (
-          <div>
-            <h3>Input Render:</h3>
-            <p>{this.props.input}</p>
-          </div>
-        );
-      }
-    };
-
-    
-class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      justClicked: null,
-      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    };
+  const buildOptionList = (items: DropdownOption[]) => {
+      return items.map(item => {
+          return <option value={item.value}>{item.label ? item.label : item.value}</option>
+      })
   }
-  handleClick(letter) {
-    this.setState({ justClicked: letter });
-  }
-  render() {
-    return (
-      <div>
-        Just clicked: {this.state.justClicked}
-        <ul>
-          {this.state.letters.map(letter =>
-            <li key={letter} onClick={() => this.handleClick(letter)}>
-              {letter}
-            </li>
-          )}
-        </ul>
-      </div>
-    )
-  }
-}
 
+  const onChange = (e: any) => {
+    props.onChange(e.target.selectedIndex - 1);
+  }
 
   return (
     <>
@@ -89,6 +34,7 @@ class extends React.Component {
       <select
         id="countries"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        onChange={onChange}
       >
         {/* <option selected>{props.title}</option>
         <option value="US">United States</option>
