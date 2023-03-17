@@ -54,7 +54,8 @@ export default function Agenda(props: AgendaProps) {
         const agendaItem = {
             item: inputText,
             dt: DateTime.now().set({ hour: parseInt(dropdownOptions[selectedIndex].value)})
-        }
+        };
+      
 
         const listCopy = [...agendaItems, agendaItem]
 
