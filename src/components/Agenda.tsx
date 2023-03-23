@@ -40,6 +40,19 @@ const dropdownOptions = [
     {value:'23', label:'11 PM'},
 ];
 
+const dropdownOptions = [];
+
+for (let i = 0; i < 24; i++) {
+  let label = (i % 12 === 0) ? '12' : (i % 12).toString();
+  let meridian = (i < 12 || i === 24) ? 'AM' : 'PM';
+  let value = i.toString();
+
+  dropdownOptions.push({
+    value: value,
+    label: `${label} ${meridian}`
+  });
+}
+
 export default function Agenda(props: AgendaProps) {
     const [inputText, setInputText] = useState('');
     const [agendaItems, setAgendaItems] = useState(props.items ?? []);
