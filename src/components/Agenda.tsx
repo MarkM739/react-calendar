@@ -43,9 +43,9 @@ interface Option {
 //     {value:'22', label:'10 PM'},
 //     {value:'23', label:'11 PM'},
 // ];
-  //Dynamic code below!!
+  //Dynamic code below - Ask Dev about "Label '${} and when to use other then +"
 
-  function generateDropdownOptions(): Option[] {
+function generateDropdownOptions(): Option[] {
     const dropdownOptions: Option[] = [];
     for (let i = 0; i < 24; i++) {
       const label = i === 0 ? '12 AM' : i < 12 ? `${i} AM` : i === 12 ? '12 PM' : `${i - 12} PM`;
@@ -53,8 +53,10 @@ interface Option {
     }
     return dropdownOptions;
   }
+
+  //
   
-  const dropdownOptions = generateDropdownOptions();
+const dropdownOptions = generateDropdownOptions();
 
 
 export default function Agenda(props: AgendaProps) {
@@ -66,11 +68,18 @@ export default function Agenda(props: AgendaProps) {
         setInputText(event.target.value);
     };
 
+    //TODO: Make alert for -1 value  
     const handleOnClick = () => {  
-        //TODO: Make alert for -1 value     
+        const selectedValue = parseInt(dropdownOptions[selectedIndex].value);
+        if (selectedIndex === -1) {
+            alert('Please select a time')
+            console.log (selectedIndex)
+        }
+       
+
         const agendaItem = {
             item: inputText,
-            dt: DateTime.now().set({ hour: parseInt(dropdownOptions[selectedIndex].value)})
+            dt: DateTime.now().set({ hour: selectedValue })
         };
       
 
