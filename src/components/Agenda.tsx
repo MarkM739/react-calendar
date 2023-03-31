@@ -70,17 +70,19 @@ export default function Agenda(props: AgendaProps) {
 
     //TODO: Make alert for -1 value  
     const handleOnClick = () => {  
-        const selectedValue = parseInt(dropdownOptions[selectedIndex].value);
         if (selectedIndex === -1) {
-            alert('Please select a time')
-            console.log (selectedIndex)
+          alert('Please select a time');
+          return; 
         }
+        const selectedValue = parseInt(dropdownOptions[selectedIndex].value);
+      
+        const agendaItem = {
+          item: inputText,
+          dt: DateTime.now().set({ hour: selectedValue })
+        };
        
 
-        const agendaItem = {
-            item: inputText,
-            dt: DateTime.now().set({ hour: selectedValue })
-        };
+      
       
 
         const listCopy = [...agendaItems, agendaItem]
@@ -114,6 +116,8 @@ export default function Agenda(props: AgendaProps) {
         </div>
     );
 }
+
+
 
  
   
