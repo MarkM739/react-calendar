@@ -5,7 +5,8 @@ import Button from "./Button";
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 interface CalendarProps {
-  nowDt: DateTime;
+  activeDate: DateTime;
+  setActiveDate: (month: number, date: number) => void;
 }
 
 interface DayItem {
@@ -14,19 +15,19 @@ interface DayItem {
 }
 
 export default function Calendar(props: CalendarProps) {
-  const { nowDt } = props;
+  const { activeDate } = props;
 
   const weekLength = weekDays.length;
 
-  const firstDayOfMonth = nowDt.startOf("month"); 
+  const firstDayOfMonth = activeDate.startOf("month"); 
   const firstDay = firstDayOfMonth.weekday;             
   const firstDayOffset = firstDay % weekLength;  
   
-  const lastDayofMonth = nowDt.endOf("month");
+  const lastDayofMonth = activeDate.endOf("month");
   const lastDay = lastDayofMonth.weekday;
   const lastDayOffset = weekLength - lastDay - 1
 
-  const days: DayItem[] = new Array(nowDt.daysInMonth + firstDayOffset + lastDayOffset)
+  const days: DayItem[] = new Array(activeDate.daysInMonth + firstDayOffset + lastDayOffset)
     .fill(null)
     .map((_, i: number) => {
       const date = firstDayOfMonth
@@ -49,12 +50,14 @@ export default function Calendar(props: CalendarProps) {
 
 
   const buildWeek = (headerArr: DayItem[]) => {
+    //TODO:Table data needs to be a button --> date selector *props setActiveDate (onClick)*
     return (
       <tr>
-        {headerArr.map(item => <td>{item.date}</td>)}
+        {headerArr.map(item => <td>{item.date}</td>)}       
       </tr>
     );
   };
+  
 
 
   const buildMonth = (days: DayItem[]) => {
@@ -73,7 +76,7 @@ export default function Calendar(props: CalendarProps) {
     <table className="border-2">
       <thead className="border-2">
         <tr className="border-2">
-          <th colSpan={weekLength}>{nowDt.monthLong}</th>
+          <th colSpan={weekLength}>{activeDate.monthLong}</th>
         </tr>
         {buildHeader(weekDays)}
       </thead>

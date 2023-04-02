@@ -14,14 +14,21 @@ const testAgendaItems = [
 ]
 
 function App() {
-  const [nowDt, setNowDt] = React.useState(DateTime.now());
+  const [activeDate, setActiveDate] = React.useState(DateTime.now());
+  const [agendaItems, setAgendaItems] = React.useState(testAgendaItems);
+
+  const updateActiveDate = (month: number, date: number) => {
+    // const newDt = DateTime. ??
+    // setActiveDate(newDt)
+  }
+
 
   return (
     <div className='bg-gray-700 text-white'>
-      <Calendar nowDt={nowDt}/>
-      <Button buttonText='Previous Month' onClick={() => setNowDt(nowDt.minus({ months: 1 }))} />
-      <Button buttonText='Next Month' onClick={() => setNowDt(nowDt.plus({ months: 1 }))} />
-      <Agenda items={testAgendaItems}/>
+      <Calendar activeDate={activeDate} setActiveDate={updateActiveDate}/>
+      <Button buttonText='Previous Month' onClick={() => setActiveDate(activeDate.minus({ months: 1 }))} />
+      <Button buttonText='Next Month' onClick={() => setActiveDate(activeDate.plus({ months: 1 }))} />
+      <Agenda items={agendaItems}/>
       
     </div>
   );
@@ -29,3 +36,5 @@ function App() {
 
 
 export default App;
+
+

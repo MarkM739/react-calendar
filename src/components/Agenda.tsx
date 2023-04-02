@@ -43,7 +43,7 @@ interface Option {
 //     {value:'22', label:'10 PM'},
 //     {value:'23', label:'11 PM'},
 // ];
-  //Dynamic code below - Ask Dev about "Label '${} and when to use other then +"
+ 
 
 function generateDropdownOptions(): Option[] {
     const dropdownOptions: Option[] = [];
@@ -82,9 +82,6 @@ export default function Agenda(props: AgendaProps) {
         };
        
 
-      
-      
-
         const listCopy = [...agendaItems, agendaItem]
 
         setAgendaItems(listCopy);
@@ -98,7 +95,7 @@ export default function Agenda(props: AgendaProps) {
 
         return (
             <ol>
-                {sortedItems.map(element => <li>{`${element.dt.toLocal()} ${element.item}`}</li>)}
+                {sortedItems.map(element => <li>{`${element.dt.toLocaleString(DateTime.TIME_SIMPLE)} ${element.item}`}</li>)}
             </ol>  
         )
     };
