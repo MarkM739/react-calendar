@@ -56,17 +56,7 @@ export default function Calendar(props: CalendarProps) {
       </tr>
     );
   };
-  const buildWeek = (headerArr: DayItem[], handleClick: (date: string) => void) => {
-    return (
-      <tr>
-        {headerArr.map(item => (
-          <td>
-            <button onClick={() => handleClick(item.date)}>{item.date}</button>
-          </td>
-        ))}
-      </tr>
-    );
-  };
+
   
 
 
