@@ -48,12 +48,22 @@ export default function Calendar(props: CalendarProps) {
     );
   };
 
-
+//TODO:Table data needs to be a button --> date selector *props setActiveDate (onClick)*
   const buildWeek = (headerArr: DayItem[]) => {
-    //TODO:Table data needs to be a button --> date selector *props setActiveDate (onClick)*
-    return (
+      return (
       <tr>
         {headerArr.map(item => <td>{item.date}</td>)}       
+      </tr>
+    );
+  };
+  const buildWeek = (headerArr: DayItem[], handleClick: (date: string) => void) => {
+    return (
+      <tr>
+        {headerArr.map(item => (
+          <td>
+            <button onClick={() => handleClick(item.date)}>{item.date}</button>
+          </td>
+        ))}
       </tr>
     );
   };

@@ -18,10 +18,10 @@ function App() {
   const [agendaItems, setAgendaItems] = React.useState(testAgendaItems);
 
   const updateActiveDate = (month: number, date: number) => {
-    // const newDt = DateTime. ??
+    
+  };
+ // const newDt = DateTime. ??
     // setActiveDate(newDt)
-  }
-
 
   return (
     <div className='bg-gray-700 text-white'>

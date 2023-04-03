@@ -67,8 +67,7 @@ export default function Agenda(props: AgendaProps) {
     const handleInputChange = (event: any) => {
         setInputText(event.target.value);
     };
-
-    //TODO: Make alert for -1 value  
+ 
     const handleOnClick = () => {  
         if (selectedIndex === -1) {
           alert('Please select a time');
