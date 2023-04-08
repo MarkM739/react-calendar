@@ -1,16 +1,13 @@
 import React, {useState} from "react";
 import { DateTime } from "luxon";
 import Dropdown from "./Dropdown";
-
-interface AgendaItem {
-    item: string;
-    dt: DateTime;
-}
+import { AgendaItem } from "../types";
 
 interface AgendaProps {
    items?: AgendaItem[];
+   addAgendaItem: (item: AgendaItem) => void;
+   activeDate: DateTime;
 }
-
 
 interface Option {
     value: string;
@@ -58,10 +55,10 @@ function generateDropdownOptions(): Option[] {
   
 const dropdownOptions = generateDropdownOptions();
 
-
 export default function Agenda(props: AgendaProps) {
+    const agendaItems = props.items ?? [];
+
     const [inputText, setInputText] = useState('');
-    const [agendaItems, setAgendaItems] = useState(props.items ?? []);
     const [selectedIndex, setSelectedIndex] = useState(-1);
  
     const handleInputChange = (event: any) => {
@@ -77,13 +74,10 @@ export default function Agenda(props: AgendaProps) {
       
         const agendaItem = {
           item: inputText,
-          dt: DateTime.now().set({ hour: selectedValue })
+          dt: DateTime.now().set({ month: props.activeDate.month, day: props.activeDate.day, hour: selectedValue })
         };
-       
 
-        const listCopy = [...agendaItems, agendaItem]
-
-        setAgendaItems(listCopy);
+        props.addAgendaItem(agendaItem);
         // ALT: setData(old => [...old, inputText])
         // TODO: Fix input field not clearing after on click
     };

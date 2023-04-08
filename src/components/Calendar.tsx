@@ -10,12 +10,12 @@ interface CalendarProps {
 }
 
 interface DayItem {
-  month: string;
+  month: number;
   date: number;
 }
 
 export default function Calendar(props: CalendarProps) {
-  const { activeDate } = props;
+  const { activeDate, setActiveDate } = props;
 
   const weekLength = weekDays.length;
 
@@ -35,7 +35,7 @@ export default function Calendar(props: CalendarProps) {
         .plus({ days: i });
 
       return {
-        month: date.monthLong,
+        month: date.month,
         date: date.day,
       };
     });
@@ -51,12 +51,19 @@ export default function Calendar(props: CalendarProps) {
 //TODO:Table data needs to be a button --> date selector *props setActiveDate (onClick)*
   const buildWeek = (headerArr: DayItem[]) => {
       return (
-      <tr>
-        {headerArr.map(item => <td>{item.date}</td>)}       
-      </tr>
+        <tr>
+          {headerArr.map(item => {
+            return (
+              <td>
+                <button onClick={() => setActiveDate(item.month, item.date)}> {item.date}</button>
+              </td>
+            )
+          })}       
+        </tr>
     );
   };
 
+ 
   
 
 
