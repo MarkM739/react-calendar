@@ -62,10 +62,7 @@ export default function Calendar(props: CalendarProps) {
         </tr>
     );
   };
-  module.exports = {
-    //...
-    plugins: [require("daisyui")],
-  }
+
  
   
 
