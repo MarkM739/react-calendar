@@ -33,7 +33,7 @@ function App() {
   // const newDt = DateTime. ??
 
   return (
-    <div className="bg-gray-700 text-white">
+    <div>
       <Calendar activeDate={activeDate} setActiveDate={updateActiveDate} />
       <Button
         buttonText="Previous Month"
