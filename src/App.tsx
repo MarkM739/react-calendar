@@ -17,6 +17,7 @@ const testAgendaItems = [
 function App() {
   const [activeDate, setActiveDate] = React.useState(DateTime.now());
   const [agendaItems, setAgendaItems] = React.useState(testAgendaItems);
+  //TODO make new piece of state for highlighting CURRENT date, when another is selected.
 
   const filterAgenda = agendaItems.filter(agendaItem => agendaItem.dt.day === activeDate.day && agendaItem.dt.month === activeDate.month);
   
@@ -33,19 +34,25 @@ function App() {
   // const newDt = DateTime. ??
 
   return (
-    <div>
-      <Calendar activeDate={activeDate} setActiveDate={updateActiveDate} />
-      <Button
-        buttonText="Previous Month"
-        onClick={() => setActiveDate(activeDate.minus({ months: 1 }))}
-      />
-      <Button
-        buttonText="Next Month"
-        onClick={() => setActiveDate(activeDate.plus({ months: 1 }))}
-      />
-      <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}/>
+    <div className="flex flex-row flex-wrap">
+      <div className="basis-2/3 grow border border-solid">
+        <Calendar activeDate={activeDate} setActiveDate={updateActiveDate} />
+        <Button
+          buttonText="Previous Month"
+          onClick={() => setActiveDate(activeDate.minus({ months: 1 }))}
+        />
+        <Button
+          buttonText="Next Month"
+          onClick={() => setActiveDate(activeDate.plus({ months: 1 }))}
+        />
+      </div>
+      <div className="basis-1/3 grow border border-solid">
+        <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}/>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+// bg-red xl:

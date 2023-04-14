@@ -53,8 +53,10 @@ export default function Calendar(props: CalendarProps) {
       return (
         <tr>
           {headerArr.map(item => {
+            const isActiveDay = item.date === activeDate.day && item.month === activeDate.month
+
             return (
-              <td>
+              <td className={`rounded-box hover:bg-base-300 ${isActiveDay ? 'bg-primary' : ''}`}>
                 <button onClick={() => setActiveDate(item.month, item.date)}> {item.date}</button>
               </td>
             )

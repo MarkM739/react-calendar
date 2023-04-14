@@ -15,8 +15,6 @@ export default function Button(props: ButtonProps) {
   }
 
   return (
-    <div>
-      <button onClick={nextMonth}>{props.buttonText}</button>
-    </div>
+      <button className="btn btn-primary" onClick={nextMonth}>{props.buttonText}</button>
   );
 }
