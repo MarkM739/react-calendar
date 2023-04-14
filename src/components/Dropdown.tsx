@@ -31,8 +31,7 @@ export default function Dropdown(props: DropdownProps) {
   return (
     <>
       <label
-        htmlFor="countries"
-        
+        htmlFor="countries"  
       >
         Select an option
       </label>
@@ -41,11 +40,6 @@ export default function Dropdown(props: DropdownProps) {
         
         onChange={onChange}
       >
-        {/* <option selected>{props.title}</option>
-        <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="9">9 AM</option> */}
         <option selected>{props.title}</option>
         {buildOptionList(props.options)}
       </select>

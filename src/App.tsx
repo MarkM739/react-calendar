@@ -38,11 +38,11 @@ function App() {
       <div className="basis-2/3 grow border border-solid">
         <Calendar activeDate={activeDate} setActiveDate={updateActiveDate} />
         <Button
-          buttonText="Previous Month"
+          buttonText="<<"
           onClick={() => setActiveDate(activeDate.minus({ months: 1 }))}
         />
         <Button
-          buttonText="Next Month"
+          buttonText=">>"
           onClick={() => setActiveDate(activeDate.plus({ months: 1 }))}
         />
       </div>

@@ -60,10 +60,13 @@ export default function Agenda(props: AgendaProps) {
         const sortedItems = items.sort((a, b) => a.dt.toMillis() - b.dt.toMillis());
 
         return (
+       
             <ol>
                 {sortedItems.map(element => <li>{`${element.dt.toLocaleString(DateTime.TIME_SIMPLE)} ${element.item}`}</li>)}
             </ol>  
-        )
+            
+            
+        );
     };
 
     const onDropdownChange = (index: number) => {
@@ -74,9 +77,25 @@ export default function Agenda(props: AgendaProps) {
         <div>
             <h1 className="text-2xl uppercase font-bold">{props.activeDate.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</h1>
             {buildList(agendaItems)}
-            <input className="input bg-slate-300 border-white-2" type="text" onChange={handleInputChange} value={inputText} />
+
+            <div className="form-control">
+            <label className="label">
+              <span className="label-text"></span>
+            </label>
+            <label className="input-group">
+            <input type="text" placeholder="Task" className="input input-bordered" onChange={handleInputChange} value={inputText} />
+            </label>
+            </div>
+
+            
+
+            <div className="dropdown dropdown-hover">
+            <label tabIndex={0} className="btn m-1">Time</label>
+            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
             <Dropdown title="Time" options={dropdownOptions} onChange={onDropdownChange}/>
-            <button className="" onClick={handleOnClick}>Add item</button>
+            </ul>
+            </div>
+            <button className="btn btn-secondary" onClick={handleOnClick}>Add item</button>
         </div>
     );
 }
@@ -85,14 +104,3 @@ export default function Agenda(props: AgendaProps) {
 
  
   
-/**
- * Agenda View
- * 
- * - wake up
- * - work out
- * - skip leg day
- * - whatever
- * 
- * [input field] [Dropdown for time] [Add item]
- * 
- */
