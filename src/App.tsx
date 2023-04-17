@@ -34,8 +34,8 @@ function App() {
   // const newDt = DateTime. ??
 
   return (
-    <div className="flex flex-row flex-wrap">
-      <div className="basis-2/3 grow border border-solid">
+    <div className="flex justify-center: justify-evenly">
+      <div className="">
         <Calendar activeDate={activeDate} setActiveDate={updateActiveDate} />
         <Button
           buttonText="<<"
@@ -46,7 +46,7 @@ function App() {
           onClick={() => setActiveDate(activeDate.plus({ months: 1 }))}
         />
       </div>
-      <div className="basis-1/3 grow border border-solid">
+      <div className="">
         <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}/>
       </div>
     </div>
@@ -56,4 +56,3 @@ function App() {
 export default App;
 
 // bg-red xl:
-// bg-red xl:// bg-red xl:// bg-red xl:// bg-red xl:// bg-red xl:
