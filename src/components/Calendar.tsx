@@ -82,14 +82,16 @@ export default function Calendar(props: CalendarProps) {
   };
 
   return (
+    <div className="border border-solid border-black ">
     <table>
       <thead>
-        <tr>
+        <tr className="border border-solid border-black">
           <th colSpan={weekLength}>{activeDate.monthLong}</th>
         </tr>
         {buildHeader(weekDays)}
       </thead>
       <tbody>{buildMonth(days)}</tbody>
     </table>
+    </div>
   );
 }
