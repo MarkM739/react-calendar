@@ -6,6 +6,7 @@ import "./index.css";
 import Agenda from "./components/Agenda";
 import Dropdown from "./components/Dropdown";
 import { AgendaItem } from "./types";
+import Workouts from "./components/Workouts";
 
 const testAgendaItems = [
   { item: "workout", dt: DateTime.now().minus({ hour: 1 }) },
@@ -49,6 +50,7 @@ function App() {
       <div className="">
         <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}/>
       </div>
+        <Workouts></Workouts>
     </div>
   );
 }
