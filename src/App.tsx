@@ -26,9 +26,6 @@ function App() {
     setActiveDate(newDate);
   };
 
-  const updateActiveDate
-  
-
   const addAgendaItem = (item: AgendaItem) => {
     const copy = [...agendaItems, item]
     setAgendaItems(copy);
