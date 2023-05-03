@@ -17,6 +17,8 @@ interface WorkoutProps {
       }));
     });
   
+  const [selectedExercises, setSelectedExercises] = useState(' ');
+
     const handleCheck = (index: number) => {
       const newExercises = [...exercises];
       newExercises[index].isChecked = !newExercises[index].isChecked;
@@ -46,7 +48,7 @@ interface WorkoutProps {
           </div>
         ))}
         <button onClick={handleAdd}>Add selected exercises to agenda</button>
-      {selectedExercises.length > 0 && <Agenda exercises={selectedExercises} />}
+      
       </div>
     );
   };

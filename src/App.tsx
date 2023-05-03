@@ -18,6 +18,7 @@ const testAgendaItems = [
 function App() {
   const [activeDate, setActiveDate] = React.useState(DateTime.now());
   const [agendaItems, setAgendaItems] = React.useState(testAgendaItems);
+  const [selectedExercises, setSelectedExercises] = React.useState(Workouts);
   //TODO make new piece of state for highlighting CURRENT date, when another is selected.
 
   const filterAgenda = agendaItems.filter(agendaItem => agendaItem.dt.day === activeDate.day && agendaItem.dt.month === activeDate.month);
@@ -48,7 +49,7 @@ function App() {
         />
       </div>
       <div className="">
-        <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}/>
+        <Agenda items={filterAgenda} addAgendaItem={addAgendaItem} activeDate={activeDate}  selectedExercises={setSelectedExercises}/>
       </div>
         <Workouts></Workouts>
     </div>
